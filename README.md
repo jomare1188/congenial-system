@@ -30,7 +30,7 @@ We first check the depth of the sequencing effort; samples with very low sequenc
 - **Raw files**: 168
 - **Samples**: 84
 - **Files with more than 1M reads**: 152
-- **Samples (>1M reads)**: 76
+- **Samples >2M reads (2 files = 1 sample, so each sample should have at least 2M)**: 76
 - **Discarded files** (less than 1M reads): 16
 - **Discarded samples**: 8
 
