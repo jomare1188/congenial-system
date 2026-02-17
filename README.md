@@ -96,9 +96,9 @@ Additional polishing with VCFtools:
 
 | Run  | M | m | n | r    | p | min-mac | min-maf | max-obs-het | write-single-snp | minDP | maxDP | HWE  | max-meanDP | Final SNPs | Strategy                      |
 |------|---|---|---|------|---|---------|---------|-------------|------------------|-------|-------|------|------------|------------|-------------------------------|
-| Run2 | 2 | 3 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 19         | Moderate clustering           |
-| Run3 | 1 | 3 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        |            | More stringent clustering     |
-| Run4 | 3 | 3 | 2 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        |            | Relaxed clustering            |
-| Run5 | 2 | 2 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        |            | Lower coverage threshold      |
-| Run6 | 3 | 2 | 2 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        |            | Most relaxed                  |
+| Run2 | 2 | 3 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 22         | Moderate clustering           |
+| Run3 | 1 | 3 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 28           | More stringent clustering     |
+| Run4 | 3 | 3 | 2 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 23         | Relaxed clustering            |
+| Run5 | 2 | 2 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 156        | Lower coverage threshold      |
+| Run6 | 3 | 2 | 2 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 205        | Most relaxed                  |
 
