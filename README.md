@@ -97,8 +97,31 @@ Additional polishing with VCFtools:
 | Run  | M | m | n | r    | p | min-mac | min-maf | max-obs-het | write-single-snp | minDP | maxDP | HWE  | max-meanDP | Final SNPs | Strategy                      |
 |------|---|---|---|------|---|---------|---------|-------------|------------------|-------|-------|------|------------|------------|-------------------------------|
 | Run2 | 2 | 3 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 22         | Moderate clustering           |
-| Run3 | 1 | 3 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 28           | More stringent clustering     |
+| Run3 | 1 | 3 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 28         | More stringent clustering     |
 | Run4 | 3 | 3 | 2 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 23         | Relaxed clustering            |
 | Run5 | 2 | 2 | 1 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 156        | Lower coverage threshold      |
 | Run6 | 3 | 2 | 2 | 0.65 | 1 | 3       | 0.05    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 205        | Most relaxed                  |
+| Run7 | 2 | 3 | 1 | 0.65 | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 92         | no min-mac, lower maf         |
+| Run8 | 2 | 3 | 2 | 0.8  | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 62         | more r, relaxed m             |
+| Run9 | 3 | 3 | 3 | 0.8  | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 5          |                               |
+|Run10 | 3 | 2 | 2 | 0.65 | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 573        |                               |
+|Run11 | 3 | 2 | 3 | 0.65 | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 99           |                               |
+|Run12 | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        |  581       |                               |
+|Run13 | 4 | 3 | 4 | 0.65 | 1 | NA      | 0.01    | 0.8         | TRUE             | 8     | 100   | 0.01 | 100        | 137        |                               |
+|Run14 | 4 | 1 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 22         |                               |
+|Run15 | 4 | 4 | 2 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |  291     |    filter indivs with > 70 missing data      |
+|Run16 | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |  1866    |    filter indivs with > 70 missing data      |
+
+
+The quantity of SNPs was notably low for runs 1 to 15. In run 16 we decided to inspect the missing data % per individual using as references run12 (which gave greater number of SNPs 
+without dropping individuals from the analysis) see:
+
+**Missing data per individual**: [`run12/05_polish/missing_indiv.txt.imiss`](run12/05_polish/missing_indiv.txt.imiss)
+
+We only used individuals with less than 70% of missing data (25 individuals not passed the threshold), which effectively resulted in a pool of  52/76 individuals (68.4%)
+
+**Banned samples**: [`pipeline/banned_indv.txt`](pipeline/banned_indv.txt)
+
+
+
 
