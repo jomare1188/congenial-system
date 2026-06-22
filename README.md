@@ -111,6 +111,9 @@ Additional polishing with VCFtools:
 |Run14 | 4 | 1 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 22         |                               |
 |Run15 | 4 | 4 | 2 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |  291     |    filter indivs with > 70 missing data      |
 |Run16 | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |  1866    |    filter indivs with > 70 missing data      |
+|Run17 | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        | 13344    |    filter indivs with > 70 missing data, custom popmap |
+|Run18 | 4 | 2 | 4 | 0.65 | 3 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        | 463     |    filter indivs with > 70 missing data, custom popmap |
+|Run19 | 4 | 2 | 4 | 0.65 | 2 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        | 1850     |    filter indivs with > 70 missing data, custom popmap |
 
 
 The quantity of SNPs was notably low for runs 1 to 15. In run 16 we decided to inspect the missing data % per individual using as references run12 (which gave greater number of SNPs 
@@ -121,6 +124,9 @@ without dropping individuals from the analysis) see:
 We only used individuals with less than 70% of missing data (25 individuals not passed the threshold), which effectively resulted in a pool of  52/76 individuals (68.4%)
 
 **Banned samples**: [`pipeline/banned_indv.txt`](pipeline/banned_indv.txt)
+
+
+For runs 17, 18, 19 we used a custom popmap basen of geagraphic origin of the samples.
 
 
 
