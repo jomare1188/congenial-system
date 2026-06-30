@@ -8,7 +8,7 @@
 set -euo pipefail
 
 # Configuration
-RUN_NAME="run2"
+RUN_NAME="run19"
 THREADS=100
 RAW_DIR="/dados01/jorge/TATIANA/raw"
 BASE_DIR="/dados01/jorge/TATIANA"
@@ -28,7 +28,7 @@ run_fastqc() {
         parallel -j "${THREADS}" \
         "fastqc {} -o ${QC_DIR} --quiet"
     multiqc "${QC_DIR}" -o "${QC_DIR}" -n raw_multiqc_report --quiet --force
-    echo "✓ FastQC complete. Report: ${QC_DIR}/raw_multiqc_report.html"
+    echo "[OK] FastQC complete. Report: ${QC_DIR}/raw_multiqc_report.html"
 }
 
 run_gbstrim() {
@@ -42,13 +42,13 @@ run_gbstrim() {
         parallel -j "${THREADS}" \
         "${SCRIPT_DIR}/gbstrim_wrapper.sh {} ${TRIMMED_DIR} R1" >> logs_gbstrim.txt 2>&1
 
-    echo "✓ GBStrim R1 complete. Output: ${TRIMMED_DIR}"
+    echo "[OK] GBStrim R1 complete. Output: ${TRIMMED_DIR}"
 
     find "${RAW_DIR}" -name "*_R2_001.fastq.gz" | \
         parallel -j "${THREADS}" \
         "${SCRIPT_DIR}/gbstrim_wrapper.sh {} ${TRIMMED_DIR} R2" >> logs_gbstrim.txt 2>&1
 
-    echo "✓ GBStrim R2 complete. Output: ${TRIMMED_DIR}"
+    echo "[OK] GBStrim R2 complete. Output: ${TRIMMED_DIR}"
 }
 
 run_resync() {
@@ -130,7 +130,7 @@ run_stacks() {
     echo "Running Stacks de novo pipeline..."
     mkdir -p "${STACKS_DIR}"
 
-    POPMAP="${STACKS_DIR}/popmap.txt"
+    POPMAP="${STACKS_DIR}/popmap_custom"
     if [ ! -f "${POPMAP}" ]; then
         echo "Creating default population map..."
         # Use resynced R1 files for popmap
@@ -138,14 +138,21 @@ run_stacks() {
             sample=$(basename "${file}" .1.fastq)
             echo -e "${sample}\t1" >> "${POPMAP}"
         done
-        echo "⚠ WARNING: All samples assigned to population 1"
+	echo "removing samples with less than 70% of missing data"
+	echo  removing $(wc -l banned_indv.txt)
+	grep -f banned_indv.txt -v $POPMAP > tmp
+	mv tmp $POPMAP
+        echo "see samples removed in banned_indv.txt"	
+        echo "WARNING: All samples assigned to population 1"
         echo "  Edit ${POPMAP} before proceeding if you have multiple populations"
     fi
 
+
+
     denovo_map.pl \
-        -M 1 \
-        -n 1 \
-        -m 3 \
+        -M 4 \
+        -n 4 \
+        -m 2 \
         -T "${THREADS}" \
         -o "${STACKS_DIR}" \
         --samples "${RESYNCED_DIR}" \
@@ -153,14 +160,14 @@ run_stacks() {
         --paired \
         2>&1 | tee "${STACKS_DIR}/denovo_map.log"
 
-    echo "✓ Stacks complete. Output: ${STACKS_DIR}"
+    echo "[OK] Stacks complete. Output: ${STACKS_DIR}"
 }
 
 run_populations() {
     echo "Running populations to generate VCF..."
     mkdir -p "${RESULTS_DIR}"
 
-    POPMAP="${STACKS_DIR}/popmap.txt"
+    POPMAP="${STACKS_DIR}/popmap_custom"
     if [ ! -f "${POPMAP}" ]; then
         echo "ERROR: Population map not found: ${POPMAP}"
         echo "Run step 5 (stacks) first"
@@ -171,10 +178,9 @@ run_populations() {
         -P "${STACKS_DIR}" \
         -M "${POPMAP}" \
         -t "${THREADS}" \
-        --min-mac 2 \
         -r 0.65 \
-        -p 1 \
-        --min-maf 0.05 \
+        -p 2 \
+        --min-maf 0.01 \
         --max-obs-het 0.7 \
         --write-single-snp \
         --vcf \
