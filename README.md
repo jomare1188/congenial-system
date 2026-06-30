@@ -128,6 +128,7 @@ We only used individuals with less than 70% of missing data (25 individuals not 
 
 For runs 17, 18, 19 we used a custom popmap basen of geagraphic origin of the samples.
 
+**Popmap**: [`pipeline/popmap_custom`](pipeline/popmap_custom)
 
 
 
