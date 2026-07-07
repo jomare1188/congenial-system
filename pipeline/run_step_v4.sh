@@ -8,7 +8,7 @@
 set -euo pipefail
 
 # Configuration
-RUN_NAME="run19"
+RUN_NAME="run18"
 THREADS=100
 RAW_DIR="/dados01/jorge/TATIANA/raw"
 BASE_DIR="/dados01/jorge/TATIANA"
@@ -130,7 +130,7 @@ run_stacks() {
     echo "Running Stacks de novo pipeline..."
     mkdir -p "${STACKS_DIR}"
 
-    POPMAP="${STACKS_DIR}/popmap_custom"
+    POPMAP="${BASE_DIR}/pipeline/popmap_custom"
     if [ ! -f "${POPMAP}" ]; then
         echo "Creating default population map..."
         # Use resynced R1 files for popmap
@@ -167,7 +167,7 @@ run_populations() {
     echo "Running populations to generate VCF..."
     mkdir -p "${RESULTS_DIR}"
 
-    POPMAP="${STACKS_DIR}/popmap_custom"
+    POPMAP="${BASE_DIR}/pipeline/popmap_custom"
     if [ ! -f "${POPMAP}" ]; then
         echo "ERROR: Population map not found: ${POPMAP}"
         echo "Run step 5 (stacks) first"

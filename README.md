@@ -111,9 +111,11 @@ Additional polishing with VCFtools:
 |Run14 | 4 | 1 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7         | TRUE             | 8     | 100   | 0.01 | 100        | 22         |                               |
 |Run15 | 4 | 4 | 2 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |  291     |    filter indivs with > 70 missing data      |
 |Run16 | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |  1866    |    filter indivs with > 70 missing data      |
-|Run17 | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        | 13344    |    filter indivs with > 70 missing data, custom popmap |
-|Run18 | 4 | 2 | 4 | 0.65 | 3 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        | 463     |    filter indivs with > 70 missing data, custom popmap |
-|Run19 | 4 | 2 | 4 | 0.65 | 2 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        | 1850     |    filter indivs with > 70 missing data, custom popmap |
+|Run17 | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        | 14259  |    filter indivs with > 70 missing data, custom popmap |
+|Run18 | 4 | 2 | 4 | 0.65 | 3 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |   2737   |    filter indivs with > 70 missing data, custom popmap |
+|Run19 | 4 | 2 | 4 | 0.65 | 2 | NA      | 0.01    | 0.7        | TRUE             | 8     | 100   | 0.01 | 100        |   1082   |    filter indivs with > 70 missing data, custom popmap |
+|run_SALA | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE          | 8     | 100   | 0.01 | 100        |   2551   |    filter indivs with > 70 missing data, ONLY SALA |
+|run_SALAP | 4 | 2 | 4 | 0.65 | 1 | NA      | 0.01    | 0.7        | TRUE         | 8     | 100   | 0.01 | 100        |   2143   |    filter indivs with > 70 missing data, ONLY SALAP |
 
 
 The quantity of SNPs was notably low for runs 1 to 15. In run 16 we decided to inspect the missing data % per individual using as references run12 (which gave greater number of SNPs 
